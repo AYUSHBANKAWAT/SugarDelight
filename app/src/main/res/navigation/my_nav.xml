@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/recipieFragment">
+
+    <fragment
+        android:id="@+id/recipieFragment"
+        android:name="com.application.sugarrush.ui.fragments.recipe.RecipieFragment"
+        android:label="Recipes"
+        tools:layout="@layout/fragment_recipie" >
+        <action
+            android:id="@+id/action_recipieFragment_to_recipesBottomSheet"
+            app:destination="@id/recipesBottomSheet" />
+        <argument
+            android:name="backFromBottomSheet"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <action
+            android:id="@+id/action_recipieFragment_to_detailsActivity"
+            app:destination="@id/detailsActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouriteReciepeFragment"
+        android:name="com.application.sugarrush.ui.fragments.favourite.favouriteReciepeFragment"
+        android:label="Favourite Recipe"
+        tools:layout="@layout/fragment_favourite_reciepe" >
+        <action
+            android:id="@+id/action_favouriteReciepeFragment_to_detailsActivity"
+            app:destination="@id/detailsActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodJokeFragment"
+        android:name="com.application.sugarrush.ui.fragments.joke.FoodJokeFragment"
+        android:label="Food Joke"
+        tools:layout="@layout/fragment_food_joke" />
+    <dialog
+        android:id="@+id/recipesBottomSheet"
+        android:name="com.application.sugarrush.ui.fragments.recipe.bottomsheet.RecipesBottomSheet"
+        android:label="recipes_bottom_sheet"
+        tools:layout="@layout/recipes_bottom_sheet" >
+        <action
+            android:id="@+id/action_recipesBottomSheet_to_recipieFragment"
+            app:destination="@id/recipieFragment" />
+    </dialog>
+    <activity
+        android:id="@+id/detailsActivity"
+        android:name="com.application.sugarrush.ui.DetailsActivity"
+        android:label="Details"
+        tools:layout="@layout/activity_details" >
+        <argument
+            android:name="result"
+            app:argType="com.application.sugarrush.models.Result" />
+    </activity>
+</navigation>
